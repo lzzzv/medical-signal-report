@@ -21,7 +21,7 @@ void setup() {
   BT.begin(9600);
   Wire.begin();
   
-  // 屏幕初始化
+  // 螢幕初始化
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
   display.setTextSize(1);
@@ -49,7 +49,7 @@ void loop() {
     int distance = distSensor.readRangeSingleMillimeters();
     int motion = digitalRead(2);
 
-    // 蓝牙传数据
+    // 用藍牙傳送資料
     String data = "ENV:" + String(temp, 1) + "," +
                   String(humidity, 1) + "," +
                   String(objTemp, 1) + "," +
@@ -59,7 +59,7 @@ void loop() {
     Serial.println(data);
     BT.println(data);
     
-    // 屏幕显示
+    // 螢幕顯示
     display.clearDisplay();
     display.setTextSize(1);
     display.setCursor(0, 0);

@@ -90,7 +90,7 @@ namespace 醫療訊號期末報告
                 e.Graphics.DrawString(e.ToolTipText, font, Brushes.Black, e.Bounds, format);
             };
 
-            tooltip.SetToolTip(guna2CircleButton2, "關閉應用");  // 黄色按钮
+            tooltip.SetToolTip(guna2CircleButton2, "關閉應用");  // 黃色按鈕
         }
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
@@ -132,7 +132,7 @@ namespace 醫療訊號期末報告
             {
                 Text = "管理者登入",
                 Width = 320,
-                Height = 180,  // ⬅️ 改成 180（原本 140）
+                Height = 180,
                 StartPosition = FormStartPosition.CenterScreen,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 MaximizeBox = false,
@@ -164,7 +164,7 @@ namespace 醫療訊號期末報告
                 Left = 120,
                 Width = 70,
                 Height = 35,
-                Top = 90,  // ⬅️ 也改一下
+                Top = 90,
                 DialogResult = DialogResult.OK
             };
 

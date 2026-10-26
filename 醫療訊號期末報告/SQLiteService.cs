@@ -29,7 +29,7 @@ namespace 醫療訊號期末報告
 
                 using (var cmd = new SqliteCommand(建表3, conn)) cmd.ExecuteNonQuery();
 
-                // 原有的表
+                // 檢測紀錄與管理者帳號
                 string 建表1 = @"
                     CREATE TABLE IF NOT EXISTS records (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -44,7 +44,7 @@ namespace 醫療訊號期末報告
 
 
 
-                // 新表：环境数据
+                // 環境數據
                 string 建表4 = @"
                     CREATE TABLE IF NOT EXISTS EnvironmentData (
                         ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -126,7 +126,7 @@ namespace 醫療訊號期末報告
             }
         }
 
-        // ===== 生理数据 =====
+        // ===== 生理數據 =====
         public static void 存生理數據(int hr, int spo2, int ecg)
         {
             using (var conn = new SqliteConnection(連線字串))
@@ -169,7 +169,7 @@ namespace 醫療訊號期末報告
             }
         }
 
-        // ===== 环境数据 =====
+        // ===== 環境數據 =====
         public static void 存環境數據(float temp, float humidity, float objTemp)
         {
             using (var conn = new SqliteConnection(連線字串))
@@ -190,7 +190,7 @@ namespace 醫療訊號期末報告
             }
         }
 
-        public static void 存生理數據_帶姓名(string 姓名, string 學號, int hr, int spo2, float objTemp)  // ⬅️ 改成 float objTemp
+        public static void 存生理數據_帶姓名(string 姓名, string 學號, int hr, int spo2, float objTemp)
         {
             using (var conn = new SqliteConnection(連線字串))
             {
@@ -212,7 +212,7 @@ namespace 醫療訊號期末報告
             }
         }
 
-        // ===== 查询生理数据 =====
+        // ===== 查詢生理數據 =====
         public static DataTable 查詢生理數據()
         {
             using (var conn = new SqliteConnection(連線字串))

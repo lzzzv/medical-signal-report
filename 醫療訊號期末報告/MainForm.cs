@@ -45,7 +45,7 @@ namespace 醫療訊號期末報告
         int motion = 0;
 
         private int 初始TabIndex = 0;
-        private int 上一個TabIndex = 0;  //
+        private int 上一個TabIndex = 0;
         public MainForm(int tabIndex = 0)
         {
             InitializeComponent();
@@ -75,8 +75,7 @@ namespace 醫療訊號期末報告
                         g.DrawLine(網格, 0, y, w, y);
                 }
 
-                // 上下兩條分線（亮綠）
-                // 上下兩條分線（平均對稱）
+                // 上下兩條分隔線
                 using (Pen 分線 = new Pen(Color.FromArgb(45, 212, 122), 1))
                 {
                     g.DrawLine(分線, 0, 40, w, 40);          // 上分線（標題下方）
@@ -159,7 +158,7 @@ namespace 醫療訊號期末報告
             }
             guna2PictureBox1.Image = bmp;
         }
-        // ⬅️ 加這個函式（跟 InterForm 一樣）
+        // 輸入管理者密碼的對話框
         private string PromptPassword(string prompt)
         {
             Form promptForm = new Form()
@@ -275,10 +274,10 @@ namespace 醫療訊號期末報告
                 dataGridView生理.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 92, 81);
                 dataGridView生理.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-                // ⬅️ 自動調整列寬
+                // 自動調整欄寬
                 dataGridView生理.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-                // ⬅️ 標紅異常行
+                // 異常資料整列標紅
                 foreach (DataGridViewRow row in dataGridView生理.Rows)
                 {
                     try
@@ -312,7 +311,7 @@ namespace 醫療訊號期末報告
             guna2Panel8.FillColor = Color.FromArgb(205, 224, 218);   // 柔和一點的深綠
             guna2Panel8.BorderRadius = 12;                         // 圓角
 
-            // 兩個燈：先設成圓形、預設灰色（未連線）
+            // 兩個連線狀態燈：圓形，預設紅色（未連線）
             void 設定燈(Guna.UI2.WinForms.Guna2Panel 燈)
             {
                 燈.Size = new Size(14, 14);
@@ -320,7 +319,7 @@ namespace 醫療訊號期末報告
                 燈.BorderThickness = 0;
                 燈.ShadowDecoration.Enabled = false;
                 燈.FillColor = Color.FromArgb(255, 60, 60);  // 預設紅（未連線）
-                燈.BackColor = Color.FromArgb(205, 224, 218);  // ← 角落色 = 導覽列深綠，讓方角隱形
+                燈.BackColor = Color.FromArgb(205, 224, 218);  // 角落色與導覽列同色，隱藏方角
             }
             設定燈(guna2Panel9);   // 環境板燈
             設定燈(guna2Panel10);  // 生理板燈
@@ -329,7 +328,7 @@ namespace 醫療訊號期末報告
             {
                 sw.CheckedState.FillColor = Color.FromArgb(34, 181, 115);   // 開：綠
                 sw.UncheckedState.FillColor = Color.FromArgb(255, 60, 60);  // 關：紅
-                sw.BackColor = Color.FromArgb(205, 224, 218);  // ← 角落色=導覽列淺綠，消除方背景
+                sw.BackColor = Color.FromArgb(205, 224, 218);  // 角落色與導覽列同色，隱藏方角
             }
             設定開關(guna2ToggleSwitch1);
             設定開關(guna2ToggleSwitch2);
@@ -352,7 +351,7 @@ namespace 醫療訊號期末報告
                 lbl.AutoSize = true;
             }
 
-            // 兩個文字：白色，配深綠背景
+            // 導覽列文字：深綠色
             void 設定導覽文字(Guna.UI2.WinForms.Guna2HtmlLabel lbl)
             {
                 lbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -363,8 +362,8 @@ namespace 醫療訊號期末報告
             設定導覽文字(guna2HtmlLabel16);  // 生理文字
 
             // ===== 按鈕_清空數據庫 =====
-            按鈕_清空數據庫.FillColor = Color.FromArgb(226, 59, 59);       // 红
-            按鈕_清空數據庫.FillColor2 = Color.FromArgb(255, 100, 100);    // 淡红
+            按鈕_清空數據庫.FillColor = Color.FromArgb(226, 59, 59);       // 紅
+            按鈕_清空數據庫.FillColor2 = Color.FromArgb(255, 100, 100);    // 淡紅
             按鈕_清空數據庫.BorderRadius = 10;
             按鈕_清空數據庫.Font = new Font("Microsoft JhengHei", 12F, FontStyle.Bold);
             按鈕_清空數據庫.ForeColor = Color.White;
@@ -398,7 +397,7 @@ namespace 醫療訊號期末報告
             // ===== tabPage6 美化 =====
             tabPage6.BackColor = Color.FromArgb(240, 243, 245);
 
-            // 加两个 Label
+            // 加兩個 Label
             Guna.UI2.WinForms.Guna2HtmlLabel lbl1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lbl1.Text = "生理數據";
             lbl1.Font = new Font("Microsoft JhengHei", 14F, FontStyle.Bold);
@@ -426,7 +425,6 @@ namespace 醫療訊號期末報告
             // ===== 生理頁 =====
             設定卡片(guna2Panel7, Color.FromArgb(226, 59, 59), Color.FromArgb(253, 245, 245));  // 心率 紅框+淺紅底
             設定卡片(guna2Panel6, Color.FromArgb(42, 123, 216), Color.FromArgb(243, 248, 253)); // 血氧 藍框+淺藍底
-                                                                                            // 環境監測頁背景：暖米色/淺棕
 
             // 通用數值文字樣式
             void 設定數值(Guna.UI2.WinForms.Guna2HtmlLabel lbl, Color 顏色)
@@ -441,7 +439,7 @@ namespace 醫療訊號期末報告
             設定數值(guna2HtmlLabel2, Color.FromArgb(42, 123, 216)); // 血氧 藍字
             guna2HtmlLabel2.Font = new Font("Segoe UI", 48F, FontStyle.Bold);  // 血氧放大
             guna2HtmlLabel4.Font = new Font("Segoe UI", 48F, FontStyle.Bold);  // 心率放大
-                                                                               // ===== 環境頁 =====
+            // ===== 環境頁 =====
             設定卡片(guna2Panel1, Color.FromArgb(200, 135, 26), Color.FromArgb(253, 250, 243));  // 溫度 橘框+淺橘底
             設定卡片(guna2Panel2, Color.FromArgb(19, 163, 122), Color.FromArgb(243, 252, 249));  // 溼度 綠框+淺綠底
             設定卡片(guna2Panel3, Color.FromArgb(226, 59, 59), Color.FromArgb(253, 245, 245));   // 體溫 紅框+淺紅底
@@ -472,9 +470,9 @@ namespace 醫療訊號期末報告
             設定狀態字(guna2HtmlLabel29);
 
             設定標題(guna2HtmlLabel1);   // 血氧標題
-            guna2HtmlLabel1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);  // 人體單獨放大
+            guna2HtmlLabel1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);  // 血氧標題放大
             設定標題(guna2HtmlLabel3);   // 心率標題
-            guna2HtmlLabel3.Font = new Font("Segoe UI", 24F, FontStyle.Bold);  // 人體單獨放大
+            guna2HtmlLabel3.Font = new Font("Segoe UI", 24F, FontStyle.Bold);  // 心率標題放大
             設定標題(guna2HtmlLabel5);   // 溫度標題
             設定標題(guna2HtmlLabel7);   // 溼度標題
             設定標題(guna2HtmlLabel9);   // 體溫標題
@@ -551,32 +549,32 @@ namespace 醫療訊號期末報告
             // ===== 關閉圓圈 =====
             guna2CircleButton1.Size = new Size(24, 24);
             guna2CircleButton1.FillColor = Color.FromArgb(34, 181, 115);  // 預設綠
-            guna2CircleButton1.BackColor = Color.FromArgb(33, 92, 81);  // ← 角落色=標題板深綠
+            guna2CircleButton1.BackColor = Color.FromArgb(33, 92, 81);  // 角落色與標題板同色
             guna2CircleButton1.Text = "";
             guna2CircleButton1.ShadowDecoration.Enabled = false;
 
-            // ===== 关闭圆圈（按钮1 - 绿色）=====
+            // ===== 關閉按鈕（綠） =====
             guna2CircleButton1.Size = new Size(24, 24);
             guna2CircleButton1.FillColor = Color.FromArgb(34, 181, 115);
             guna2CircleButton1.BackColor = Color.FromArgb(33, 92, 81);
             guna2CircleButton1.Text = "";
-            guna2CircleButton1.BorderThickness = 0;  // ⬅️ 无边框
+            guna2CircleButton1.BorderThickness = 0;  // 無邊框
             guna2CircleButton1.ShadowDecoration.Enabled = false;
 
-            // ===== 返回按钮（按钮2 - 黄色）=====
+            // ===== 返回按鈕（黃） =====
             guna2CircleButton2.Size = new Size(24, 24);
             guna2CircleButton2.FillColor = Color.FromArgb(255, 193, 7);
-            guna2CircleButton2.BackColor = Color.FromArgb(33, 92, 81);  // ⬅️ 改成深绿，跟1一样
+            guna2CircleButton2.BackColor = Color.FromArgb(33, 92, 81);  // 角落色與標題板同色
             guna2CircleButton2.Text = "";
-            guna2CircleButton2.BorderThickness = 0;  // ⬅️ 无边框
+            guna2CircleButton2.BorderThickness = 0;  // 無邊框
             guna2CircleButton2.ShadowDecoration.Enabled = false;
 
-            // ===== 最小化按钮（按钮3 - 蓝色）=====
+            // ===== 最小化按鈕（藍） =====
             guna2CircleButton3.Size = new Size(24, 24);
             guna2CircleButton3.FillColor = Color.FromArgb(94, 148, 255);
-            guna2CircleButton3.BackColor = Color.FromArgb(33, 92, 81);  // ⬅️ 改成深绿，跟1一样
+            guna2CircleButton3.BackColor = Color.FromArgb(33, 92, 81);  // 角落色與標題板同色
             guna2CircleButton3.Text = "";
-            guna2CircleButton3.BorderThickness = 0;  // ⬅️ 无边框
+            guna2CircleButton3.BorderThickness = 0;  // 無邊框
             guna2CircleButton3.ShadowDecoration.Enabled = false;
 
             // ===== tabPage6 標題 =====
@@ -598,10 +596,10 @@ namespace 醫療訊號期末報告
             ToolTip tooltip = new ToolTip();
             tooltip.OwnerDraw = true;
 
-            // ⬅️ 设置大小
+            // 提示框大小
             tooltip.Popup += (s, e) =>
             {
-                e.ToolTipSize = new Size(120, 40);  // ⬅️ 改成这样
+                e.ToolTipSize = new Size(120, 40);
             };
 
             tooltip.Draw += (s, e) =>
@@ -609,7 +607,7 @@ namespace 醫療訊號期末報告
                 e.DrawBackground();
                 e.DrawBorder();
 
-                // ⬅️ 改大字体 + 居中
+                // 放大字體並置中
                 Font font = new Font("Microsoft JhengHei", 14F, FontStyle.Bold);
                 StringFormat format = new StringFormat();
                 format.Alignment = StringAlignment.Center;
@@ -626,22 +624,22 @@ namespace 醫療訊號期末報告
 
         private void guna2CircleButton2_MouseEnter(object sender, EventArgs e)
         {
-            guna2CircleButton2.FillColor = Color.FromArgb(255, 160, 0);  // 滑入变深橘
+            guna2CircleButton2.FillColor = Color.FromArgb(255, 160, 0);  // 滑入變深橘
         }
 
         private void guna2CircleButton2_MouseLeave(object sender, EventArgs e)
         {
-            guna2CircleButton2.FillColor = Color.FromArgb(255, 193, 7);  // 离开变黄
+            guna2CircleButton2.FillColor = Color.FromArgb(255, 193, 7);  // 離開變黃
         }
 
         private void guna2CircleButton3_MouseEnter(object sender, EventArgs e)
         {
-            guna2CircleButton3.FillColor = Color.FromArgb(70, 130, 255);  // 滑入变亮蓝
+            guna2CircleButton3.FillColor = Color.FromArgb(70, 130, 255);  // 滑入變亮藍
         }
 
         private void guna2CircleButton3_MouseLeave(object sender, EventArgs e)
         {
-            guna2CircleButton3.FillColor = Color.FromArgb(94, 148, 255);  // 离开变蓝
+            guna2CircleButton3.FillColor = Color.FromArgb(94, 148, 255);  // 離開變藍
         }
 
         private void guna2CircleButton1_MouseEnter(object sender, EventArgs e)
@@ -709,7 +707,7 @@ namespace 醫療訊號期末報告
 
                     this.BeginInvoke(new Action(() =>
                     {
-                        if (!顯示生理) return;  // ← 開關關著就不更新
+                        if (!顯示生理) return;  // 開關關閉時不更新
                         畫ECG();
                     }));
                 }
@@ -763,7 +761,7 @@ namespace 醫療訊號期末報告
 
                         this.BeginInvoke(new Action(() =>
                         {
-                            if (!顯示環境) return;  // ← 開關關著就不更新
+                            if (!顯示環境) return;  // 開關關閉時不更新
                             guna2HtmlLabel6.Text = temp + " °C";        // 環境溫度
                             guna2HtmlLabel8.Text = humidity + " %";     // 溼度
                             guna2HtmlLabel10.Text = objTemp + " °C";
@@ -867,7 +865,7 @@ namespace 醫療訊號期末報告
                     {
                         var p = new SerialPort("COM8", 9600);
                         p.DataReceived += Env_DataReceived;
-                        p.Open();   // 卡的就是這行，在背景跑
+                        p.Open();   // 開啟連線較慢，放在背景執行
                         portEnv = p;
                         環境最後收到 = DateTime.Now;
 
@@ -1056,14 +1054,14 @@ namespace 醫療訊號期末報告
                 return;
             }
 
-            // ⬅️ 檢查藍牙
+            // 檢查環境板（藍牙）是否已連線
             if (objTemp == 0 && !顯示環境)
             {
                 MessageBox.Show("體溫資料為空，請啟動藍牙連接環境板", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 弹出对话框输入姓名和学号
+            // 彈出對話框輸入姓名和學號
             Form form = new Form()
             {
                 Text = "儲存資料",
@@ -1115,7 +1113,7 @@ namespace 醫療訊號期末報告
 
         private void guna2TabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (e.TabPage == tabPage6)  // 选中 tabPage6
+            if (e.TabPage == tabPage6)  // 切到資料紀錄頁需輸入管理者密碼
             {
                 string password = PromptPassword("請輸入管理者密碼：");
 
@@ -1126,7 +1124,7 @@ namespace 醫療訊號期末報告
                     return;
                 }
 
-                // ⬅️ 进来时显示数据
+                // 通過驗證後顯示資料
                 顯示資料紀錄();
             }
         }
@@ -1151,19 +1149,19 @@ namespace 醫療訊號期末報告
         {
             Timer 動畫 = new Timer();
             int 步數 = 0;
-            int 總步數 = 20;  // 更多步数 = 更平滑
+            int 總步數 = 20;  // 步數越多越平滑
 
             int 原始寬 = this.Width;
             int 原始高 = this.Height;
             int 原始X = this.Left;
             int 原始Y = this.Top;
 
-            動畫.Interval = 30;  // 30ms（比较平滑）
+            動畫.Interval = 30;  // 30ms
             動畫.Tick += (s, e2) =>
             {
                 步數++;
 
-                // 进度比例
+                // 進度比例
                 float 進度 = (float)步數 / 總步數;
 
                 // 淡出
@@ -1184,7 +1182,7 @@ namespace 醫療訊號期末報告
                     動畫.Stop();
                     動畫.Dispose();
 
-                    // ⬅️ 關鍵：恢復原始大小再最小化
+                    // 恢復原始大小再最小化
                     this.Opacity = 1;
                     this.Width = 原始寬;
                     this.Height = 原始高;
@@ -1200,7 +1198,7 @@ namespace 醫療訊號期末報告
 
         private void 按鈕_清空數據庫_Click(object sender, EventArgs e)
         {
-            // 检查是否选中行
+            // 檢查是否選取資料列
             if (dataGridView生理.SelectedRows.Count == 0)
             {
                 MessageBox.Show("請先選取要刪除的資料", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1212,11 +1210,11 @@ namespace 醫療訊號期末報告
             {
                 try
                 {
-                    // 获取选中行的 ID（第一列）
+                    // 取得選取資料列的 ID（第一欄）
                     int id = Convert.ToInt32(dataGridView生理.SelectedRows[0].Cells[0].Value);
                     SQLiteService.刪除生理數據(id);
                     MessageBox.Show("資料已刪除！");
-                    顯示資料紀錄();  // 刷新
+                    顯示資料紀錄();  // 重新整理
                 }
                 catch
                 {

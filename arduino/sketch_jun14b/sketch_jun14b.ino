@@ -68,7 +68,7 @@ void loop() {
     // 用紅光與紅外光的比值粗估血氧
     // 比值越低，血氧越高（正常人約 95~99）
     float ratio = (float)red / (float)ir;
-// 你的比值約 1.0~1.2，對應血氧 95~99
+    // 實測比值約 1.0~1.2，對應血氧 95~99
     int est = (int)(125 - 25 * ratio);
     if (est > 100) est = 100;
     if (est < 90) est = 90;
